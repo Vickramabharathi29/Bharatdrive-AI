@@ -1,0 +1,42 @@
+# Vercel Deployment Ignore Rules - BharatDrive-AI
+# Exclude offline assets, heavy datasets, and desktop toolchains from serverless bundle
+
+# Version Control & CI
+.git
+.gitignore
+.github
+
+# Testing and Caches
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.coverage
+htmlcov
+conftest.py
+python/tests/
+
+# MATLAB & Simulink Toolchains (Desktop-only)
+matlab/
+simulink/
+roadrunner_scenes/
+startup.m
+run_dashboard.m
+startup.bat
+run_dashboard.bat
+startup.ps1
+run_dashboard.ps1
+*.slx
+*.mat
+*.mlx
+
+# Large Offline Datasets & Media
+dataset/
+demo_videos/
+presentation/
+reports/
+
+# Offline Model Training Scripts
+trajectory_prediction/training/
+yolo_detection/scripts/
