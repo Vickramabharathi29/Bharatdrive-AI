@@ -8,8 +8,12 @@ function fused_tracks = block_yolo_fusion_detection(camera_detections, lidar_clu
 %   fused_tracks: 5x7 array [x_rel, y_rel, vx_rel, vy_rel, class_id, confidence, distance]
 
 fused_tracks = zeros(5, 7);
+N_cam = size(camera_detections, 1);
+N_lid = size(lidar_clusters, 1);
+N_rad = size(radar_targets, 1);
+N_rows = min([5, N_cam, N_lid, N_rad]);
 
-for i = 1:5
+for i = 1:N_rows
     cam = camera_detections(i, :);
     lid = lidar_clusters(i, :);
     rad = radar_targets(i, :);

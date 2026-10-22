@@ -36,7 +36,8 @@ for v_step = 0:6
         
         % Clearance score
         min_d = 100.0;
-        for k = 1:5
+        N_obs = size(obstacles, 1);
+        for k = 1:min(5, N_obs)
             d = hypot(pred_x - obstacles(k, 1), pred_y - obstacles(k, 2));
             if d < min_d
                 min_d = d;

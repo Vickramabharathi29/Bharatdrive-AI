@@ -36,8 +36,10 @@ max_risk = 0.0;
 obs_dist = 60.0;
 obs_vrel = 0.0;
 obs_lat = 0.0;
-for k = 1:5
-    if obstacles(k, 6) > max_risk
+N_obs = size(obstacles, 1);
+has_cols = size(obstacles, 2) >= 6;
+for k = 1:min(5, N_obs)
+    if has_cols && obstacles(k, 6) > max_risk
         max_risk = obstacles(k, 6);
         obs_dist = hypot(obstacles(k, 1) - ego_bus.x, obstacles(k, 2) - ego_bus.y);
         obs_vrel = hypot(obstacles(k, 3), obstacles(k, 4));

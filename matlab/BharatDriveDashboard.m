@@ -250,6 +250,15 @@ classdef BharatDriveDashboard < matlab.apps.AppBase
             app.updateUI();
         end
 
+        function onFigureClose(app, ~)
+            % Cleanly stop and delete simulation timer upon user closing UIFigure
+            if ~isempty(app.SimTimer) && isvalid(app.SimTimer)
+                stop(app.SimTimer);
+                delete(app.SimTimer);
+            end
+            delete(app.UIFigure);
+        end
+
         % --- Master Simulation Loop Cycle (Triggered by Timer at 20 Hz) ---
         function onTimerTick(app, ~, ~)
             tic_now = tic;
@@ -904,6 +913,7 @@ classdef BharatDriveDashboard < matlab.apps.AppBase
             app.UIFigure.Position = [100, 80, 1380, 860];
             app.UIFigure.Name = 'BharatDrive-AI: Autonomous Driving Telemetry & Risk Dashboard';
             app.UIFigure.Color = [0.10, 0.12, 0.16]; % Dark slate
+            app.UIFigure.CloseRequestFcn = createCallbackFcn(app, @onFigureClose, true);
 
             % 2. Main Outer Grid Layout (Header row + Body row)
             app.MainGrid = uigridlayout(app.UIFigure, [2, 1]);

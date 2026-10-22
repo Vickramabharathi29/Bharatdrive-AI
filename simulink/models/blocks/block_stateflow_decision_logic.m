@@ -33,18 +33,35 @@ ego_x = ego_bus.x;
 ego_y = ego_bus.y;
 ego_v = ego_bus.v;
 
-obs_d     = threat_obs(1);
-obs_vrel  = threat_obs(2);
-obs_x     = threat_obs(3);
-obs_y     = threat_obs(4);
-obs_class = int32(threat_obs(5));
-obs_risk  = threat_obs(6);
-obs_ttc   = threat_obs(7);
+if numel(threat_obs) >= 7
+    obs_d     = threat_obs(1);
+    obs_vrel  = threat_obs(2);
+    obs_x     = threat_obs(3);
+    obs_y     = threat_obs(4);
+    obs_class = int32(threat_obs(5));
+    obs_risk  = threat_obs(6);
+    obs_ttc   = threat_obs(7);
+else
+    obs_d     = 100.0;
+    obs_vrel  = 0.0;
+    obs_x     = 100.0;
+    obs_y     = 0.0;
+    obs_class = int32(0);
+    obs_risk  = 0.0;
+    obs_ttc   = 99.0;
+end
 
-left_clear  = env_signals(1);
-right_clear = env_signals(2);
-oncoming_d  = env_signals(3);
-sig_state   = int32(env_signals(4)); % 3 = Red
+if numel(env_signals) >= 4
+    left_clear  = env_signals(1);
+    right_clear = env_signals(2);
+    oncoming_d  = env_signals(3);
+    sig_state   = int32(env_signals(4)); % 3 = Red
+else
+    left_clear  = 3.5;
+    right_clear = 3.5;
+    oncoming_d  = 100.0;
+    sig_state   = int32(0);
+end
 
 next_state = current_state;
 horn_cmd = false;

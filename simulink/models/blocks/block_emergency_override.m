@@ -9,9 +9,11 @@ w_raw = raw_cmd(2);
 % Check critical forward proximity (TTC < 1.0s or distance < 4.0m)
 emergency_stop = false;
 max_risk = 0.0;
-for k = 1:5
+N_obs = size(obstacles, 1);
+has_risk_col = size(obstacles, 2) >= 6;
+for k = 1:min(5, N_obs)
     d = hypot(obstacles(k, 1) - ego_bus.x, obstacles(k, 2) - ego_bus.y);
-    if obstacles(k, 6) > max_risk
+    if has_risk_col && obstacles(k, 6) > max_risk
         max_risk = obstacles(k, 6);
     end
     if d < 4.0 && obstacles(k, 1) > ego_bus.x && abs(obstacles(k, 2) - ego_bus.y) < 1.5

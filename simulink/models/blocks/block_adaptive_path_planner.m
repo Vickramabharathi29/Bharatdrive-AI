@@ -17,10 +17,17 @@ ego_y = ego_bus.y;
 ego_v = ego_bus.v;
 ego_yaw = ego_bus.yaw;
 
-obs_d    = threat_obstacle(1);
-obs_x    = threat_obstacle(3);
-obs_y    = threat_obstacle(4);
-obs_risk = threat_obstacle(6);
+if numel(threat_obstacle) >= 6
+    obs_d    = threat_obstacle(1);
+    obs_x    = threat_obstacle(3);
+    obs_y    = threat_obstacle(4);
+    obs_risk = threat_obstacle(6);
+else
+    obs_d    = 100.0;
+    obs_x    = 100.0;
+    obs_y    = 0.0;
+    obs_risk = 0.0;
+end
 
 half_w = env_bus.RoadWidth / 2.0 - 0.6;
 

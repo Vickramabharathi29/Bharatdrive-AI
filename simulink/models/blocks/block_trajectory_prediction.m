@@ -10,15 +10,17 @@ function predicted_trajectories = block_trajectory_prediction(fused_tracks, env_
 
 predicted_trajectories = zeros(5, 10);
 half_w = env_bus.RoadWidth / 2.0 - 0.4;
+N_tracks = size(fused_tracks, 1);
+has_dist = size(fused_tracks, 2) >= 7;
 
-for i = 1:5
+for i = 1:min(5, N_tracks)
     x0 = fused_tracks(i, 1);
     y0 = fused_tracks(i, 2);
     vx = fused_tracks(i, 3);
     vy = fused_tracks(i, 4);
     class_id = int32(fused_tracks(i, 5));
 
-    if fused_tracks(i, 7) < 0.1
+    if has_dist && fused_tracks(i, 7) < 0.1
         continue; % Inactive track
     end
 
