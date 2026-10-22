@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480">
+<rect width="900" height="480" fill="#0D111A" rx="12"/>
+<text x="40" y="45" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold">Metric 1 & 6: Minimum Clearance & Collision Rate Across Indian Road Scenarios</text>
+<text x="40" y="68" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="12">Safety Buffer Threshold: 1.0m (Red Dotted Line). Zero Collisions (0.0%) Achieved by BharatDrive-AI.</text>
+<rect x="80" y="110" width="740" height="290" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<line x1="80" y1="400.0" x2="820" y2="400.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="404.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">0.0m</text>
+<line x1="80" y1="351.6666666666667" x2="820" y2="351.6666666666667" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="355.6666666666667" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">0.5m</text>
+<line x1="80" y1="303.33333333333337" x2="820" y2="303.33333333333337" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="307.33333333333337" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">1.0m</text>
+<line x1="80" y1="255.0" x2="820" y2="255.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="259.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">1.5m</text>
+<line x1="80" y1="206.66666666666669" x2="820" y2="206.66666666666669" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="210.66666666666669" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">2.0m</text>
+<line x1="80" y1="158.33333333333331" x2="820" y2="158.33333333333331" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="162.33333333333331" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">2.5m</text>
+<line x1="80" y1="110.0" x2="820" y2="110.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<text x="68" y="114.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">3.0m</text>
+<line x1="80" y1="303.33333333333337" x2="820" y2="303.33333333333337" stroke="#FF3B30" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="810" y="297.33333333333337" fill="#FF3B30" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="end">CRITICAL SAFETY BUFFER (1.0m)</text>
+<rect x="109.66666666666666" y="221.16666666666666" width="20" height="178.83333333333334" fill="#00E5FF" rx="3"/>
+<text x="119.66666666666666" y="216.16666666666666" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.85m</text>
+<rect x="131.66666666666666" y="293.66666666666663" width="20" height="106.33333333333334" fill="#FFB300" rx="3"/>
+<text x="141.66666666666666" y="288.66666666666663" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.10m</text>
+<rect x="153.66666666666666" y="366.1666666666667" width="20" height="33.83333333333333" fill="#FF5252" rx="3"/>
+<text x="163.66666666666666" y="361.1666666666667" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.35m</text>
+<text x="141.66666666666666" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Scn 1: Village</text>
+<rect x="233.0" y="262.73333333333335" width="20" height="137.26666666666665" fill="#00E5FF" rx="3"/>
+<text x="243.0" y="257.73333333333335" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.42m</text>
+<rect x="255.0" y="337.1666666666667" width="20" height="62.833333333333336" fill="#FFB300" rx="3"/>
+<text x="265.0" y="332.1666666666667" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.65m</text>
+<rect x="277.0" y="388" width="20" height="12" fill="#FF5252" rx="3"/>
+<text x="287.0" y="384" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">CRASH</text>
+<text x="265.0" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Scn 2: Market</text>
+<rect x="356.3333333333333" y="237.60000000000002" width="20" height="162.39999999999998" fill="#00E5FF" rx="3"/>
+<text x="366.3333333333333" y="232.60000000000002" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.68m</text>
+<rect x="378.3333333333333" y="313.0" width="20" height="87.0" fill="#FFB300" rx="3"/>
+<text x="388.3333333333333" y="308.0" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.90m</text>
+<rect x="400.3333333333333" y="356.5" width="20" height="43.5" fill="#FF5252" rx="3"/>
+<text x="410.3333333333333" y="351.5" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.45m</text>
+<text x="388.3333333333333" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Scn 3: Junction</text>
+<rect x="479.6666666666667" y="187.33333333333331" width="20" height="212.66666666666669" fill="#00E5FF" rx="3"/>
+<text x="489.6666666666667" y="182.33333333333331" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">2.20m</text>
+<rect x="501.6666666666667" y="245.33333333333334" width="20" height="154.66666666666666" fill="#FFB300" rx="3"/>
+<text x="511.6666666666667" y="240.33333333333334" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.60m</text>
+<rect x="523.6666666666667" y="293.66666666666663" width="20" height="106.33333333333334" fill="#FF5252" rx="3"/>
+<text x="533.6666666666667" y="288.66666666666663" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.10m</text>
+<text x="511.6666666666667" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Scn 4: Highway</text>
+<rect x="602.9999999999999" y="230.83333333333331" width="20" height="169.16666666666669" fill="#00E5FF" rx="3"/>
+<text x="612.9999999999999" y="225.83333333333331" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.75m</text>
+<rect x="624.9999999999999" y="332.33333333333337" width="20" height="67.66666666666666" fill="#FFB300" rx="3"/>
+<text x="634.9999999999999" y="327.33333333333337" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.70m</text>
+<rect x="646.9999999999999" y="388" width="20" height="12" fill="#FF5252" rx="3"/>
+<text x="656.9999999999999" y="384" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">CRASH</text>
+<text x="634.9999999999999" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Scn 5: Cattle</text>
+<rect x="726.3333333333333" y="250.16666666666666" width="20" height="149.83333333333334" fill="#00E5FF" rx="3"/>
+<text x="736.3333333333333" y="245.16666666666666" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.55m</text>
+<rect x="748.3333333333333" y="351.6666666666667" width="20" height="48.33333333333333" fill="#FFB300" rx="3"/>
+<text x="758.3333333333333" y="346.6666666666667" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.50m</text>
+<rect x="770.3333333333333" y="388" width="20" height="12" fill="#FF5252" rx="3"/>
+<text x="780.3333333333333" y="384" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">CRASH</text>
+<text x="758.3333333333333" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Master Mixed</text>
+<rect x="80" y="425" width="740" height="40" fill="rgba(0,0,0,0.3)" rx="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<rect x="100" y="438" width="14" height="14" fill="#00E5FF" rx="3"/>
+<text x="122" y="449" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">BharatDrive-AI (Collision Rate: 0.0%)</text>
+<rect x="360" y="438" width="14" height="14" fill="#FFB300" rx="3"/>
+<text x="382" y="449" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11">Baseline 2: Rule-Based (Collision Rate: 16.7%)</text>
+<rect x="620" y="438" width="14" height="14" fill="#FF5252" rx="3"/>
+<text x="642" y="449" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11">Baseline 1: Pure Pursuit (Collision Rate: 50.0%)</text>
+</svg>

@@ -1,0 +1,62 @@
+# RoadRunner Scene 3: Urban Junction (Uncontrolled Roundabout / Erratic Intersection)
+scenario_id: "RR_IND_SCN_03_JUNCTION"
+title: "4-Way Uncontrolled Roundabout with Mixed Traffic Weaving & Non-Yielding Approaches"
+irc_standards: ["IRC:86-1983", "IRC:67-2012"]
+
+junction_geometry:
+  type: "circular_roundabout_uncontrolled"
+  central_island_diameter_m: 12.0
+  circulating_carriageway_width_m: 9.50
+  central_island_feature: "statue_memorial_with_raised_curb"
+  number_of_legs: 4
+  approach_leg_width_m: 7.00
+  approach_lanes_per_leg: 2 # unstriped in practice
+  approach_curb_radius_m: 12.0
+
+road_signs:
+  - { type: "M-08", name: "Compulsory_Roundabout", location: "all_4_approaches" }
+  - { type: "Informatory", name: "Multi_Destination_Cantilever_Gantry", location: "South_Approach" }
+  - { type: "Blinker", name: "Flashing_Amber_Caution_Beacon", location: "Central_Island_Center" }
+
+road_boundaries:
+  central_island_curb: { height_m: 0.15, marking: "yellow_and_black_reflective" }
+  pedestrian_refuges: { has_bollards: true, color: "safety_yellow" }
+  traffic_police_booth: { location: "Southwest_Corner", type: "raised_umbrella_cabin" }
+
+buildings_and_props:
+  - { type: "commercial_bank_building", quadrant: "Northwest", height_floors: 5 }
+  - { type: "fuel_station_petrol_pump", quadrant: "Northeast", has_open_ingress: true }
+  - { type: "metro_elevated_rail_piers", location: "East_West_Axis", pier_diameter_m: 2.2 }
+
+actors:
+  ego:
+    type: "Tata_Nexon_EV"
+    approach_leg: "South"
+    target_exit: "North"
+    approach_speed_mps: 8.33 # 30 km/h
+  moving_vehicles:
+    - id: "city_bus"
+      type: "Ashok_Leyland_Transit_Bus"
+      length_m: 11.50
+      width_m: 2.60
+      approach_leg: "East"
+      target_exit: "West"
+      speed_mps: 6.94
+      behavior: "WIDE_SWING_AND_NON_YIELDING"
+    - id: "rickshaw_diagonal_cut"
+      type: "Three_Wheeler"
+      circulating_from: "East"
+      circulating_to: "South"
+      speed_mps: 6.00
+      behavior: "CHOP_CORNER_INSIDE_RADIUS"
+    - id: "pulsar_motorcycle"
+      type: "Two_Wheeler"
+      approach_leg: "West"
+      speed_mps: 9.00
+  pedestrians:
+    - id: "jaywalker_diagonal_crossing"
+      crossing_point: "South_Approach_Mouth"
+      speed_mps: 1.30
+    - id: "traffic_police_officer"
+      location: "Central_Island_Edge"
+      is_active: true

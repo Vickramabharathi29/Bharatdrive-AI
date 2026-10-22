@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480">
+<rect width="900" height="480" fill="#0D111A" rx="12"/>
+<text x="40" y="45" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold">Metric 5: Path Smoothness & RMS Lateral Jerk (ISO 2631 Passenger Comfort)</text>
+<text x="40" y="68" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="12">Comfort Boundary: Jerk &lt; 1.5 m/s³ (Green Zone: Smooth). Above 3.0 m/s³ causes severe passenger discomfort.</text>
+<rect x="80" y="110" width="740" height="290" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<line x1="80" y1="400.0" x2="820" y2="400.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+<text x="68" y="404.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">0.0 m/s³</text>
+<line x1="80" y1="342.0" x2="820" y2="342.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+<text x="68" y="346.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">1.0 m/s³</text>
+<line x1="80" y1="313.0" x2="820" y2="313.0" stroke="#00E676" stroke-width="1.8" stroke-dasharray="6,4"/>
+<text x="68" y="317.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">1.5 m/s³</text>
+<line x1="80" y1="284.0" x2="820" y2="284.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+<text x="68" y="288.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">2.0 m/s³</text>
+<line x1="80" y1="226.0" x2="820" y2="226.0" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="6,4"/>
+<text x="68" y="230.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">3.0 m/s³</text>
+<line x1="80" y1="168.0" x2="820" y2="168.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+<text x="68" y="172.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">4.0 m/s³</text>
+<line x1="80" y1="110.0" x2="820" y2="110.0" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+<text x="68" y="114.0" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="end">5.0 m/s³</text>
+<text x="810" y="307.0" fill="#00E676" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="end">MAX COMFORTABLE JERK THRESHOLD (1.5 m/s³)</text>
+<text x="810" y="220.0" fill="#FF3B30" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="end">UNCOMFORTABLE JERK THRESHOLD (3.0 m/s³)</text>
+<rect x="111.66666666666666" y="352.44" width="20" height="47.559999999999995" fill="#00E5FF" rx="3"/>
+<text x="121.66666666666666" y="347.44" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">0.82</text>
+<rect x="133.66666666666666" y="304.3" width="20" height="95.69999999999999" fill="#FFB300" rx="3"/>
+<text x="143.66666666666666" y="299.3" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.65</text>
+<rect x="155.66666666666666" y="237.60000000000002" width="20" height="162.39999999999998" fill="#FF5252" rx="3"/>
+<text x="165.66666666666666" y="232.60000000000002" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">2.80</text>
+<text x="141.66666666666666" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Village Road</text>
+<rect x="235.0" y="333.3" width="20" height="66.69999999999999" fill="#00E5FF" rx="3"/>
+<text x="245.0" y="328.3" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.15</text>
+<rect x="257.0" y="257.9" width="20" height="142.10000000000002" fill="#FFB300" rx="3"/>
+<text x="267.0" y="252.89999999999998" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">2.45</text>
+<rect x="279.0" y="162.20000000000002" width="20" height="237.79999999999998" fill="#FF5252" rx="3"/>
+<text x="289.0" y="157.20000000000002" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">4.10</text>
+<text x="265.0" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Busy Market</text>
+<rect x="358.3333333333333" y="344.9" width="20" height="55.1" fill="#00E5FF" rx="3"/>
+<text x="368.3333333333333" y="339.9" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">0.95</text>
+<rect x="380.3333333333333" y="290.96" width="20" height="109.04" fill="#FFB300" rx="3"/>
+<text x="390.3333333333333" y="285.96" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.88</text>
+<rect x="402.3333333333333" y="211.5" width="20" height="188.5" fill="#FF5252" rx="3"/>
+<text x="412.3333333333333" y="206.5" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">3.25</text>
+<text x="388.3333333333333" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Urban Junction</text>
+<rect x="481.6666666666667" y="372.16" width="20" height="27.84" fill="#00E5FF" rx="3"/>
+<text x="491.6666666666667" y="367.16" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">0.48</text>
+<rect x="503.6666666666667" y="346.64" width="20" height="53.36" fill="#FFB300" rx="3"/>
+<text x="513.6666666666667" y="341.64" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">0.92</text>
+<rect x="525.6666666666667" y="315.9" width="20" height="84.1" fill="#FF5252" rx="3"/>
+<text x="535.6666666666667" y="310.9" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.45</text>
+<text x="511.6666666666667" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Highway Merge</text>
+<rect x="604.9999999999999" y="339.1" width="20" height="60.900000000000006" fill="#00E5FF" rx="3"/>
+<text x="614.9999999999999" y="334.1" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1.05</text>
+<rect x="626.9999999999999" y="266.6" width="20" height="133.39999999999998" fill="#FFB300" rx="3"/>
+<text x="636.9999999999999" y="261.6" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">2.30</text>
+<rect x="648.9999999999999" y="176.7" width="20" height="223.3" fill="#FF5252" rx="3"/>
+<text x="658.9999999999999" y="171.7" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">3.85</text>
+<text x="634.9999999999999" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Cattle Crossing</text>
+<rect x="728.3333333333333" y="346.64" width="20" height="53.36" fill="#00E5FF" rx="3"/>
+<text x="738.3333333333333" y="341.64" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">0.92</text>
+<rect x="750.3333333333333" y="286.9" width="20" height="113.10000000000001" fill="#FFB300" rx="3"/>
+<text x="760.3333333333333" y="281.9" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">1.95</text>
+<rect x="772.3333333333333" y="202.8" width="20" height="197.2" fill="#FF5252" rx="3"/>
+<text x="782.3333333333333" y="197.8" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="9" text-anchor="middle">3.40</text>
+<text x="758.3333333333333" y="422" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Mixed Hazard</text>
+<rect x="80" y="425" width="740" height="40" fill="rgba(0,0,0,0.3)" rx="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<rect x="100" y="438" width="14" height="14" fill="#00E5FF" rx="3"/>
+<text x="122" y="449" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">BharatDrive-AI (Mean Jerk: 0.89 m/s³ - Smooth Comfort)</text>
+<rect x="420" y="438" width="14" height="14" fill="#FFB300" rx="3"/>
+<text x="442" y="449" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11">Baseline 2 (Mean: 1.86 m/s³)</text>
+<rect x="660" y="438" width="14" height="14" fill="#FF5252" rx="3"/>
+<text x="682" y="449" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11">Baseline 1 (Mean: 3.14 m/s³)</text>
+</svg>

@@ -1,0 +1,70 @@
+# RoadRunner Scene 4: Highway Merge (Two-Lane Highway On-Ramp with Wrong-Way Traffic)
+scenario_id: "RR_IND_SCN_04_HIGHWAY"
+title: "National Highway Divided Carriageway with Trumpet On-Ramp and Wrong-Way Shoulder Vehicle"
+irc_standards: ["IRC:73-1980", "IRC:67-2012", "IRC:119-2015"]
+
+road_geometry:
+  mainline:
+    carriageway_type: "dual_carriageway_divided"
+    carriageway_width_m: 7.00 # 2 lanes per direction
+    median_type: "concrete_new_jersey_barrier_with_anti_glare"
+    median_width_m: 1.50
+    paved_shoulder_width_m: 1.50
+    earthen_verge_width_m: 1.00
+    total_length_m: 500.0
+  slip_ramp:
+    type: "acceleration_on_ramp"
+    ramp_width_m: 4.50
+    taper_length_m: 120.0
+    convergence_angle_deg: 8.5
+    outer_barrier: "w_beam_crash_barrier"
+
+road_signs:
+  - { type: "W-24", name: "Merge_Traffic_From_Left", s: 150.0, lateral_offset_m: 2.50 }
+  - { type: "M-01", name: "Speed_Limit_80", s: 50.0, lateral_offset_m: 2.50 }
+  - { type: "Informatory", name: "Cantilever_Highway_Green_Signboard", s: 200.0 }
+
+road_boundaries:
+  mainline_median: { height_m: 0.81, material: "precast_reinforced_concrete" }
+  ramp_outer: { type: "galvanized_steel_w_beam_guardrail" }
+  high_mast_lighting: { pole_height_m: 30.0, spacing_m: 80.0 }
+
+buildings_and_props:
+  - { type: "highway_dhaba_restaurant", s: 320.0, lateral_offset_m: 25.0 }
+  - { type: "tyre_puncture_stall", s: 300.0, lateral_offset_m: 8.0 }
+  - { type: "toll_plaza_distant_canopy", s: 480.0 }
+
+actors:
+  ego:
+    type: "Tata_Nexon_EV"
+    initial_s: 50.0
+    initial_d: -1.75 # Cruising in left lane
+    target_speed_mps: 22.22 # 80 km/h
+  moving_vehicles:
+    - id: "heavy_truck_16_wheeler"
+      type: "BharatBenz_Multi_Axle_Freight_Truck"
+      length_m: 12.00
+      width_m: 2.60
+      initial_s: 180.0
+      initial_d: -1.75
+      speed_mps: 16.67 # 60 km/h
+    - id: "express_overtaking_car"
+      type: "Hyundai_Creta_SUV"
+      initial_s: 30.0
+      initial_d: 1.75 # Right lane
+      speed_mps: 25.00 # 90 km/h
+    - id: "merging_pickup_bolero"
+      type: "Mahindra_Bolero_Camper"
+      location: "Slip_Ramp"
+      speed_mps: 11.11 # 40 km/h
+      merge_point_s: 260.0
+    - id: "wrong_way_scooter" # Critical Indian edge case
+      type: "Two_Wheeler"
+      initial_s: 380.0
+      initial_d: -4.20 # Driving ON the paved shoulder facing oncoming traffic
+      speed_mps: -6.94 # -25 km/h
+  pedestrians:
+    - id: "bus_passenger_waiting"
+      s: 310.0
+      d: -4.50
+      speed_mps: 0.0

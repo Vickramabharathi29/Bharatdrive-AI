@@ -1,0 +1,77 @@
+# RoadRunner Scene 2: Busy Market (Bazaar Street)
+scenario_id: "RR_IND_SCN_02_MARKET"
+title: "Constrained Commercial Corridor with Encroachments, Auto-Rickshaws & Pedestrian Swarms"
+irc_standards: ["IRC:86-1983", "IRC:67-2012"]
+
+road_geometry:
+  type: "urban_arterial_unlaned"
+  nominal_width_m: 9.00
+  effective_drivable_width_m: 4.20
+  surface_material: "Paver_Blocks_and_Worn_Bitumen"
+  total_length_m: 250.0
+  manholes:
+    - { s: 35.0, d: 0.20, height_offset_m: 0.06 }
+    - { s: 110.0, d: -0.50, height_offset_m: -0.05 }
+
+road_signs:
+  - { type: "R-22", name: "No_Parking_Violated", s: 15.0, lateral_offset_m: 4.0 }
+  - { type: "W-29", name: "Pedestrian_Crossing_Ahead", s: 40.0, lateral_offset_m: 4.2 }
+
+road_boundaries:
+  drain_type: "covered_rcc_drain_with_grating"
+  curb_type: "elevated_commercial_shop_plinth"
+  overhead_cables: { height_m: 4.0, clutter_level: "severe" }
+  encroachments:
+    - { type: "vegetable_wooden_cart", s: 50.0, d: -2.8, width_m: 1.2, length_m: 2.0 }
+    - { type: "fruit_stall_umbrella", s: 120.0, d: 2.7, width_m: 1.5, length_m: 1.8 }
+    - { type: "parked_two_wheelers_row", s_start: 70.0, s_end: 110.0, d: -2.9, intrusion_m: 1.1 }
+
+buildings_and_props:
+  building_facade: "continuous_2_to_3_story_shopfronts"
+  setback_m: 0.0
+  features: ["fabric_awnings", "advertising_flex_boards", "electric_transformers"]
+
+actors:
+  ego:
+    type: "Tata_Nexon_EV"
+    initial_s: 5.0
+    initial_d: 0.0
+    target_speed_mps: 4.17 # 15 km/h
+  moving_vehicles:
+    - id: "bajaj_auto_rickshaw"
+      type: "Three_Wheeler"
+      length_m: 2.70
+      width_m: 1.40
+      initial_s: 30.0
+      initial_d: 0.50
+      speed_mps: 5.0
+      behavior: "SUDDEN_PASSENGER_DROP_AND_CUTIN"
+    - id: "delivery_e_rickshaw"
+      type: "Three_Wheeler_EV"
+      length_m: 2.80
+      width_m: 1.20
+      initial_s: 90.0
+      initial_d: -0.40
+      speed_mps: 3.5
+    - id: "honda_activa_scooter"
+      type: "Two_Wheeler"
+      initial_s: 15.0
+      initial_d: -1.20
+      speed_mps: 6.5
+      behavior: "GAP_FILTERING"
+  pedestrians:
+    - id: "shopper_crossing_blind"
+      s: 48.0
+      d: 2.80
+      target_d: -2.80
+      speed_mps: 1.25
+      trigger: "EGO_PROXIMITY_12M"
+    - id: "vendor_pushing_cart"
+      s: 75.0
+      d: 0.90
+      speed_mps: 0.80
+  animals:
+    - id: "cow_feeding_on_refuse"
+      s: 135.0
+      d: 2.20
+      speed_mps: 0.0

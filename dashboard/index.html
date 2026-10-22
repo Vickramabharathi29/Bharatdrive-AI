@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BharatDrive-AI | Autonomous Vehicle Telemetry & Risk Dashboard</title>
+  <meta name="description" content="Real-time Autonomous Driving Telemetry, Risk Assessment, and Adaptive Path Planning Dashboard for Unstructured Indian Roadways.">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300E5FF'><path d='M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z'/></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation & Header Bar -->
+  <header class="dashboard-header">
+    <div class="brand-section">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+      </div>
+      <div class="brand-text">
+        <h1>BHARATDRIVE-AI <span class="brand-badge">TELEMETRY v2.5</span></h1>
+        <div class="brand-subtitle">Adaptive Path Planning & Collision Avoidance on Indian Roads</div>
+      </div>
+    </div>
+
+    <!-- Scenario Selector in Header -->
+    <div class="header-center">
+      <div class="scenario-selector-wrap">
+        <label for="scenarioSelect">Scenario:</label>
+        <select id="scenarioSelect" class="scenario-select">
+          <option value="5" selected>Scenario 5: Cattle Crossing (Bovine Obstruction)</option>
+          <option value="1">Scenario 1: Village Road (Gramin Sadak - Tractor & Pedestrian)</option>
+          <option value="2">Scenario 2: Busy Market (Bazaar Street - Auto-Rickshaws & Crowds)</option>
+          <option value="3">Scenario 3: Urban Junction (Chowk - Unsignalized Cross-Traffic)</option>
+          <option value="4">Scenario 4: Highway Merge (National Highway - Fast Commercial Trucks)</option>
+          <option value="6">Scenario 6: Mixed Hazard Master (Cow + Auto + Pothole + Bus)</option>
+        </select>
+      </div>
+
+      <!-- Benchmark Metrics Button -->
+      <button id="openMetricsBtn" class="btn-metrics" onclick="document.getElementById('metricsModal').style.display='flex'; document.body.style.overflow='hidden';" title="View Benchmark Evaluation Metrics & Comparative Graphs">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+        <span>Evaluation Metrics</span>
+      </button>
+    </div>
+
+    <!-- Real-time Telemetry (FPS, Clock, State) -->
+    <div class="header-telemetry">
+      <div class="telemetry-pill">
+        <div class="fps-dot"></div>
+        <span>FPS: <strong id="fpsValue" class="fps-val">20.0</strong></span>
+      </div>
+      <div class="telemetry-pill">
+        <span>T: <strong id="simTimeValue">0.00s</strong></span>
+        <span style="color:var(--text-dim)">|</span>
+        <span>Step: <strong id="stepCountValue">0</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Multi-Column Dashboard Grid -->
+  <main class="dashboard-main">
+
+    <!-- ====================================================================
+         LEFT COLUMN: Vehicle Speed, Collision Warning, Sensor Status
+         ==================================================================== -->
+    <section class="column-left">
+
+      <!-- 1. Vehicle Speed Card -->
+      <article class="card speed-card" id="speedCard">
+        <div class="card-header" style="width:100%;">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+            Vehicle Speed
+          </div>
+          <span style="font-size:0.68rem; color:var(--accent-cyan); font-family:var(--font-mono);">CAN-BUS FEED</span>
+        </div>
+
+        <div class="speedometer-visual">
+          <svg class="speed-gauge-svg" viewBox="0 0 200 150">
+            <defs>
+              <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00e5ff"/>
+                <stop offset="50%" stop-color="#00e676"/>
+                <stop offset="85%" stop-color="#ffb300"/>
+                <stop offset="100%" stop-color="#ff334b"/>
+              </linearGradient>
+            </defs>
+            <!-- Background Arc (Radius 70, from 150 to 30 deg) -->
+            <path class="gauge-bg" d="M 30 135 A 70 70 0 1 1 170 135"/>
+            <!-- Fill Indicator Arc -->
+            <path id="speedGaugeFill" class="gauge-fill" d="M 30 135 A 70 70 0 1 1 170 135"/>
+          </svg>
+          <div class="speed-digital-overlay">
+            <span id="speedValue" class="speed-number">30.0</span>
+            <span class="speed-unit">KM / H</span>
+          </div>
+        </div>
+
+        <div class="speed-stats-grid">
+          <div class="speed-stat-box">
+            <div class="speed-stat-label">Velocity (SI)</div>
+            <div id="speedMsValue" class="speed-stat-val">8.33 m/s</div>
+          </div>
+          <div class="speed-stat-box">
+            <div class="speed-stat-label">Target Cruise</div>
+            <div id="targetSpeedValue" class="speed-stat-val">50.0 km/h</div>
+          </div>
+          <div class="speed-stat-box" style="grid-column: span 2;">
+            <div class="speed-stat-label">Longitudinal Dynamics</div>
+            <div id="accelStatusValue" class="speed-stat-val" style="color:var(--accent-green);">Cruising Steady</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Collision Warning (FCW / AEB) Card -->
+      <article class="card warning-card" id="warningCard">
+        <div class="card-header">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+            Collision Warning
+          </div>
+          <span style="font-size:0.68rem; color:var(--accent-amber); font-family:var(--font-mono);">FCW / AEB HUD</span>
+        </div>
+
+        <div id="warningBanner" class="warning-banner status-safe">
+          <div class="warning-icon" id="warningIcon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          </div>
+          <div class="warning-info-text">
+            <div id="warningHeadline" class="warning-headline">SAFE: ROAD CLEAR AHEAD</div>
+            <div id="warningSubtext" class="warning-subtext">Cruising inside safe corridor envelope</div>
+          </div>
+        </div>
+
+        <div class="ttc-container">
+          <span class="ttc-label">Time to Collision (TTC)</span>
+          <span id="ttcValue" class="ttc-value">Safe (∞)</span>
+        </div>
+
+        <div class="primary-threat-detail" id="threatDetail">
+          Threat: <strong>Clear Roadway</strong>
+        </div>
+      </article>
+
+      <!-- 3. Sensor Suite Status Card -->
+      <article class="card sensor-card" id="sensorCard">
+        <div class="card-header">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M12 15c1.66 0 3-1.34 3-3V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3z"/></svg>
+            Sensor Status
+          </div>
+          <span style="font-size:0.68rem; color:var(--accent-green); font-family:var(--font-mono);">ALL SYSTEMS HEALTHY</span>
+        </div>
+
+        <div class="sensor-grid">
+          <div class="sensor-row">
+            <div class="sensor-left">
+              <div class="sensor-lamp" id="sensorCamLamp"></div>
+              <span class="sensor-name">Front Camera</span>
+            </div>
+            <span class="sensor-specs" id="sensorCamStatus">1080p 60Hz Active</span>
+          </div>
+
+          <div class="sensor-row">
+            <div class="sensor-left">
+              <div class="sensor-lamp" id="sensorLidarLamp"></div>
+              <span class="sensor-name">Roof 3D LiDAR</span>
+            </div>
+            <span class="sensor-specs" id="sensorLidarStatus">128-Beam 20Hz Active</span>
+          </div>
+
+          <div class="sensor-row">
+            <div class="sensor-left">
+              <div class="sensor-lamp" id="sensorRadarLamp"></div>
+              <span class="sensor-name">FMCW Radar</span>
+            </div>
+            <span class="sensor-specs" id="sensorRadarStatus">77GHz 50Hz Active</span>
+          </div>
+
+          <div class="sensor-row">
+            <div class="sensor-left">
+              <div class="sensor-lamp" id="sensorImuLamp"></div>
+              <span class="sensor-name">RTK GNSS / IMU</span>
+            </div>
+            <span class="sensor-specs" id="sensorImuStatus">Fixed 100Hz Active</span>
+          </div>
+        </div>
+
+        <div class="weather-status-box">
+          <span id="weatherFriction">Friction: μ=0.82 | Vis: 100%</span>
+          <span>Weather: Clear</span>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ====================================================================
+         CENTER COLUMN: Current Path (Bird's-Eye View Canvas) & Controls
+         ==================================================================== -->
+    <section class="column-center">
+
+      <article class="card bev-card" id="bevCard">
+        <div class="card-header">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+            Current Path & Bird's-Eye View (BEV)
+          </div>
+          <div class="bev-header-controls">
+            <span class="bev-badge">Hybrid A* + DWA Rollout</span>
+          </div>
+        </div>
+
+        <div class="bev-canvas-container">
+          <canvas id="bevCanvas"></canvas>
+
+          <!-- Interactive BEV Legend Overlay -->
+          <div class="bev-legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background:#00e5ff;"></div>
+              <span>Ego (Tata Nexon EV)</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:#00e676;"></div>
+              <span>DWA Local Trajectory</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:#00e5ff; opacity:0.6;"></div>
+              <span>Hybrid A* Guide Corridor</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:#b388ff;"></div>
+              <span>Tactical Nudge Vector</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:#ff9100;"></div>
+              <span>Indian Road Obstacles</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Playback Control Toolbar -->
+      <div class="control-bar">
+        <div class="button-group">
+          <button id="btnPlay" class="btn btn-secondary">⏸ Pause</button>
+          <button id="btnStep" class="btn btn-secondary">⏭ Step</button>
+          <button id="btnReset" class="btn btn-secondary">↺ Reset</button>
+          <button id="btnEmergency" class="btn btn-danger">⚠ MANUAL AEB</button>
+        </div>
+
+        <div class="sim-speed-selector">
+          <span>Speed:</span>
+          <select id="simSpeedSelect">
+            <option value="0.5">0.5x</option>
+            <option value="1.0" selected>1.0x (Real-Time)</option>
+            <option value="2.0">2.0x</option>
+            <option value="5.0">5.0x</option>
+          </select>
+        </div>
+
+        <div id="maneuverBadge" class="maneuver-state-badge">State: Accelerate</div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         RIGHT COLUMN: Current Risk (7-Factor IRRM) & Detected Objects Table
+         ==================================================================== -->
+    <section class="column-right">
+
+      <!-- 1. Current Risk Card -->
+      <article class="card risk-card" id="riskCard">
+        <div class="card-header">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            Current Risk: 7-Factor IRRM
+          </div>
+          <span style="font-size:0.68rem; color:var(--accent-red); font-family:var(--font-mono);">INDIAN ROAD METRIC</span>
+        </div>
+
+        <div class="risk-summary-row">
+          <div class="risk-score-display">
+            <span id="riskScoreNum" class="risk-score-num">0</span>
+            <span class="risk-score-percent">%</span>
+          </div>
+          <div id="riskCriticalityBadge" class="risk-criticality-badge low">
+            Criticality: LOW
+          </div>
+        </div>
+
+        <div class="risk-bar-track">
+          <div id="riskBarFill" class="risk-bar-fill"></div>
+        </div>
+
+        <div id="riskActionDirective" class="risk-action-directive">
+          Recommended Action: <strong>MAINTAIN CRUISE</strong>
+        </div>
+
+        <!-- 7-Factor Breakdown Progress Bars -->
+        <div class="factor-breakdown-title">7-Factor IRRM Contextual Breakdown</div>
+        <div class="factor-grid">
+          <div class="factor-row">
+            <span class="factor-name">Kinetic (TTC/Prox)</span>
+            <div class="factor-bar-bg"><div id="factorBarKinetic" class="factor-bar-fill" style="background:#00e5ff;"></div></div>
+            <span id="factorValKinetic" class="factor-val">0.5</span>
+          </div>
+          <div class="factor-row">
+            <span class="factor-name">Approach Heading</span>
+            <div class="factor-bar-bg"><div id="factorBarHeading" class="factor-bar-fill" style="background:#00e676;"></div></div>
+            <span id="factorValHeading" class="factor-val">1.0</span>
+          </div>
+          <div class="factor-row">
+            <span class="factor-name">Vulnerability (Type)</span>
+            <div class="factor-bar-bg"><div id="factorBarVulnerability" class="factor-bar-fill" style="background:#ff9100;"></div></div>
+            <span id="factorValVulnerability" class="factor-val">2.2</span>
+          </div>
+          <div class="factor-row">
+            <span class="factor-name">Road Width Bottleneck</span>
+            <div class="factor-bar-bg"><div id="factorBarBottleneck" class="factor-bar-fill" style="background:#ffd54f;"></div></div>
+            <span id="factorValBottleneck" class="factor-val">1.0</span>
+          </div>
+          <div class="factor-row">
+            <span class="factor-name">Weather & Friction</span>
+            <div class="factor-bar-bg"><div id="factorBarWeather" class="factor-bar-fill" style="background:#b388ff;"></div></div>
+            <span id="factorValWeather" class="factor-val">1.1</span>
+          </div>
+          <div class="factor-row">
+            <span class="factor-name">Multi-Agent Density</span>
+            <div class="factor-bar-bg"><div id="factorBarDensity" class="factor-bar-fill" style="background:#ff5252;"></div></div>
+            <span id="factorValDensity" class="factor-val">1.3</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Detected Objects Table Card -->
+      <article class="card objects-card" id="objectsCard">
+        <div class="card-header">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            Detected Objects
+          </div>
+          <span style="font-size:0.68rem; color:var(--accent-cyan); font-family:var(--font-mono);">FUSED TRACKS</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="objects-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Class</th>
+                <th>Range</th>
+                <th>VRel</th>
+                <th>Conf</th>
+                <th>Sensors</th>
+                <th>Risk</th>
+              </tr>
+            </thead>
+            <tbody id="objectsTableBody">
+              <!-- Populated dynamically by dashboard_app.js -->
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- Footer Info Bar -->
+  <footer class="dashboard-footer">
+    <div>
+      BharatDrive-AI &bull; MathWorks Autonomous Driving Hackathon &bull; Closed-Loop Co-Simulation Platform
+    </div>
+    <div>
+      MATLAB App Designer Interface: <a href="file:///c:/Users/HP/OneDrive/Desktop/Bharatdrive-AI/matlab/BharatDriveDashboard.m" class="footer-link">BharatDriveDashboard.m</a>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       EVALUATION METRICS & BENCHMARK GRAPHS MODAL
+       ==================================================================== -->
+  <div id="metricsModal" class="metrics-modal" style="display:none;">
+    <div class="metrics-modal-backdrop" id="closeMetricsBackdrop" onclick="document.getElementById('metricsModal').style.display='none'; document.body.style.overflow='';"></div>
+    <div class="metrics-modal-content">
+      <div class="metrics-modal-header">
+        <div class="modal-title-group">
+          <div class="brand-badge" style="background:rgba(0,229,255,0.2);color:var(--accent-cyan);border:1px solid rgba(0,229,255,0.4);">BENCHMARK SUITE</div>
+          <h2>Evaluation Metrics & Comparative Graphs</h2>
+          <span class="modal-sub">6 Indian Road Scenarios &bull; BharatDrive-AI vs Baseline Stacks</span>
+        </div>
+        <button class="modal-close-btn" id="closeMetricsBtn" onclick="document.getElementById('metricsModal').style.display='none'; document.body.style.overflow='';" aria-label="Close modal">&times;</button>
+      </div>
+
+      <!-- 7 Metrics KPI Summary Row -->
+      <div class="metrics-kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Collision Rate</div>
+          <div class="kpi-value text-green">0.0%</div>
+          <div class="kpi-meta">vs 16.7% Baseline 2, 66.7% Baseline 1</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Average Speed</div>
+          <div class="kpi-value text-cyan">33.8 <span class="kpi-unit">km/h</span></div>
+          <div class="kpi-meta">67.6% Cruise Efficiency</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Scenario Completion</div>
+          <div class="kpi-value text-green">100%</div>
+          <div class="kpi-meta">6 / 6 Complex Scenarios Finished</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Avg Replanning Time</div>
+          <div class="kpi-value text-cyan">12.2 <span class="kpi-unit">ms</span></div>
+          <div class="kpi-meta">P99: 18.9 ms (Real-time limit: 100 ms)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Path Smoothness</div>
+          <div class="kpi-value text-purple">0.89 <span class="kpi-unit">m/s³</span></div>
+          <div class="kpi-meta">ISO 2631 Passenger Comfort: 92/100</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Minimum Clearance</div>
+          <div class="kpi-value text-amber">1.37 <span class="kpi-unit">m</span></div>
+          <div class="kpi-meta">Safety buffer (1.0m) strictly preserved</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">CPU Usage</div>
+          <div class="kpi-value text-cyan">40.0%</div>
+          <div class="kpi-meta">20.0 ms per 50 ms loop budget at 20 Hz</div>
+        </div>
+      </div>
+
+      <!-- Graph Viewer Section with Tabs -->
+      <div class="graph-viewer-container">
+        <div class="graph-tabs-nav">
+          <button class="graph-tab-btn active" data-graph="figures/evaluation_summary_dashboard.png" onclick="document.querySelectorAll('.graph-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.getElementById('activeGraphImg').src=this.dataset.graph;">Master Summary Dashboard</button>
+          <button class="graph-tab-btn" data-graph="figures/clearance_and_collision_rate.png" onclick="document.querySelectorAll('.graph-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.getElementById('activeGraphImg').src=this.dataset.graph;">Clearance & Collision Rate</button>
+          <button class="graph-tab-btn" data-graph="figures/speed_and_completion_rates.png" onclick="document.querySelectorAll('.graph-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.getElementById('activeGraphImg').src=this.dataset.graph;">Speed & Completion Rates</button>
+          <button class="graph-tab-btn" data-graph="figures/replanning_latency_distribution.png" onclick="document.querySelectorAll('.graph-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.getElementById('activeGraphImg').src=this.dataset.graph;">Replanning Latency Distribution</button>
+          <button class="graph-tab-btn" data-graph="figures/path_smoothness_and_jerk.png" onclick="document.querySelectorAll('.graph-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.getElementById('activeGraphImg').src=this.dataset.graph;">Path Smoothness & Jerk</button>
+          <button class="graph-tab-btn" data-graph="figures/cpu_usage_and_subsystem_breakdown.png" onclick="document.querySelectorAll('.graph-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.getElementById('activeGraphImg').src=this.dataset.graph;">CPU Breakdown by Subsystem</button>
+        </div>
+
+        <div class="graph-display-frame">
+          <img id="activeGraphImg" src="figures/evaluation_summary_dashboard.png" alt="Evaluation Metric Graph" class="graph-img">
+        </div>
+      </div>
+
+      <!-- Benchmark Comparison Table -->
+      <div class="benchmark-table-card">
+        <h3 style="font-size:0.95rem; margin-bottom:12px; color:var(--text-main);">Empirical Multi-Scenario Benchmark Comparison</h3>
+        <div class="table-responsive">
+          <table class="objects-table benchmark-tbl">
+            <thead>
+              <tr>
+                <th>Autonomous Stack</th>
+                <th>Collision Rate</th>
+                <th>Avg Speed</th>
+                <th>Completion Rate</th>
+                <th>Replanning Time</th>
+                <th>RMS Lateral Jerk</th>
+                <th>Min Clearance</th>
+                <th>CPU Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:rgba(0,229,255,0.08); font-weight:600;">
+                <td><span style="color:var(--accent-cyan);">BharatDrive-AI (Ours)</span></td>
+                <td><span class="badge-safe">0.0% (0/6)</span></td>
+                <td>33.8 km/h</td>
+                <td><span class="badge-safe">100.0% (6/6)</span></td>
+                <td>12.2 ms (P99: 18.9 ms)</td>
+                <td>0.89 m/s³</td>
+                <td>1.37 m</td>
+                <td>40.0% (20.0 ms)</td>
+              </tr>
+              <tr>
+                <td>Baseline 2: Rule-Based Frenet</td>
+                <td><span class="badge-warn">16.7% (1/6)</span></td>
+                <td>26.7 km/h</td>
+                <td>83.3% (5/6)</td>
+                <td>33.1 ms (P99: 47.5 ms)</td>
+                <td>1.44 m/s³</td>
+                <td>1.08 m</td>
+                <td>46.2% (23.1 ms)</td>
+              </tr>
+              <tr>
+                <td>Baseline 1: Pure Pursuit + Fixed Corridor</td>
+                <td><span class="badge-crit">66.7% (4/6)</span></td>
+                <td>16.8 km/h</td>
+                <td>50.0% (3/6)</td>
+                <td>6.1 ms (P99: 8.8 ms)</td>
+                <td>2.28 m/s³</td>
+                <td>0.45 m (Breached)</td>
+                <td>24.6% (12.3 ms)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/simulation_engine.js"></script>
+  <script src="js/dashboard_app.js"></script>
+</body>
+</html>

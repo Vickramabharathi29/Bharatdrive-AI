@@ -1,0 +1,37 @@
+# Vehicle Configuration: Compact Electric SUV (Tata Nexon EV / Mahindra e-Verito Class)
+vehicle:
+  name: "BharatDrive_Ego_EV"
+  dimensions:
+    length: 3.993           # Overall length in meters
+    width: 1.811            # Overall width in meters
+    height: 1.606           # Overall height in meters
+    wheelbase: 2.498        # Distance between front and rear axle (L)
+    front_overhang: 0.780   # Front bumper to front axle
+    rear_overhang: 0.715    # Rear bumper to rear axle
+    track_width: 1.520      # Distance between center of left and right tires
+
+  mass_properties:
+    mass: 1400.0            # Curb mass in kg (m)
+    inertia_z: 2250.0       # Yaw moment of inertia in kg*m^2 (Iz)
+    cg_to_front_axle: 1.150 # Distance from CG to front axle (lf)
+    cg_to_rear_axle: 1.348  # Distance from CG to rear axle (lr)
+
+  kinematic_limits:
+    max_steer_angle_rad: 0.55     # Max front wheel steering angle (~31.5 deg)
+    max_steer_rate_rad_s: 0.60    # Maximum steering rate (rad/s)
+    max_velocity_mps: 22.22       # 80 km/h maximum operating speed
+    min_velocity_mps: 0.0         # Non-negative forward driving speed
+    max_accel_mps2: 3.5           # Max longitudinal acceleration
+    max_decel_mps2: -6.5          # Emergency braking deceleration
+    comfort_accel_mps2: 1.8       # Passenger comfort acceleration limit
+    comfort_decel_mps2: -2.5      # Passenger comfort deceleration limit
+    max_lat_accel_mps2: 3.5       # Lateral acceleration constraint (v^2 * kappa)
+    comfort_lat_accel_mps2: 2.0   # Comfort lateral acceleration threshold
+    max_lat_jerk_mps3: 2.0        # Comfort lateral jerk threshold
+    max_lon_jerk_mps3: 2.5        # Comfort longitudinal jerk threshold
+
+  tire_parameters:
+    cornering_stiffness_front: 80000.0 # Front tire cornering stiffness Cf (N/rad)
+    cornering_stiffness_rear: 85000.0  # Rear tire cornering stiffness Cr (N/rad)
+    friction_coefficient: 0.85         # Road-tire friction coefficient (dry asphalt)
+    friction_coefficient_wet: 0.50     # Road-tire friction coefficient (monsoon wet road)

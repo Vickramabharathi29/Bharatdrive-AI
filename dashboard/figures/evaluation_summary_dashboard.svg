@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780">
+<rect width="1200" height="780" fill="#0D111A" rx="14"/>
+<text x="50" y="50" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold">BHARATDRIVE-AI: BENCHMARK EVALUATION DASHBOARD</text>
+<text x="50" y="76" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="13">Quantitative Performance Analysis across 5 Indian Road Scenarios & 7 Critical Autonomous Driving Metrics</text>
+<rect x="50.0" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="62.0" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">Collision Rate</text>
+<text x="62.0" y="158" fill="#00E676" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">0.0%</text>
+<text x="62.0" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Zero Collisions</text>
+<rect x="209.14285714285714" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="221.14285714285714" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">Avg Speed</text>
+<text x="221.14285714285714" y="158" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">33.8 km/h</text>
+<text x="221.14285714285714" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">67.6% Cruise Eff.</text>
+<rect x="368.2857142857143" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="380.2857142857143" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">Scenario Comp.</text>
+<text x="380.2857142857143" y="158" fill="#00E676" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">100%</text>
+<text x="380.2857142857143" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">6/6 Reached Goal</text>
+<rect x="527.4285714285714" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="539.4285714285714" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">Replanning Time</text>
+<text x="539.4285714285714" y="158" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">12.4 ms</text>
+<text x="539.4285714285714" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">P99: 18.9 ms</text>
+<rect x="686.5714285714286" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="698.5714285714286" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">Path Smoothness</text>
+<text x="698.5714285714286" y="158" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">0.89 m/s³</text>
+<text x="698.5714285714286" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Comfort: 92/100</text>
+<rect x="845.7142857142857" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="857.7142857142857" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">Min Clearance</text>
+<text x="857.7142857142857" y="158" fill="#00E676" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">1.42 m</text>
+<text x="857.7142857142857" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Safety Buffer OK</text>
+<rect x="1004.8571428571429" y="100" width="145.14285714285714" height="95" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="1016.8571428571429" y="124" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">CPU Usage</text>
+<text x="1016.8571428571429" y="158" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold">40.0%</text>
+<text x="1016.8571428571429" y="180" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">20ms / 50ms Slot</text>
+<rect x="50" y="215" width="1100" height="260" fill="#151B28" rx="10" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="70" y="247" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold">Comprehensive Multi-Stack Performance Benchmark</text>
+<text x="70" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Algorithm Stack</text>
+<text x="260" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Collision Rate</text>
+<text x="390" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Avg Speed</text>
+<text x="520" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Completion Rate</text>
+<text x="660" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Replan Latency</text>
+<text x="800" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">RMS Lat Jerk</text>
+<text x="930" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Min Clearance</text>
+<text x="1050" y="279" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">CPU Usage</text>
+<line x1="65" y1="289" x2="1135" y2="289" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+<rect x="65" y="303" width="1070" height="36" rx="4" fill="rgba(0,229,255,0.06)"/>
+<text x="70" y="325" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">BharatDrive-AI (Adaptive Stack)</text>
+<text x="260" y="325" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">0.0%</text>
+<text x="390" y="325" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">33.8 km/h</text>
+<text x="520" y="325" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">100.0%</text>
+<text x="660" y="325" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">12.4 ms</text>
+<text x="800" y="325" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">0.89 m/s³</text>
+<text x="930" y="325" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">1.42 m</text>
+<text x="1050" y="325" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">40.0%</text>
+<rect x="65" y="351" width="1070" height="36" rx="4"/>
+<text x="70" y="373" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="12" font-weight="normal">Baseline 2: Rule-Based Frenet</text>
+<text x="260" y="373" fill="#FFB300" font-family="Segoe UI, sans-serif" font-size="12" font-weight="normal">16.7%</text>
+<text x="390" y="373" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">26.7 km/h</text>
+<text x="520" y="373" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">83.3%</text>
+<text x="660" y="373" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">28.5 ms</text>
+<text x="800" y="373" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">1.86 m/s³</text>
+<text x="930" y="373" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">0.50 m</text>
+<text x="1050" y="373" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">58.0%</text>
+<rect x="65" y="399" width="1070" height="36" rx="4"/>
+<text x="70" y="421" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="12" font-weight="normal">Baseline 1: Pure Pursuit + Const Spd</text>
+<text x="260" y="421" fill="#FF5252" font-family="Segoe UI, sans-serif" font-size="12" font-weight="normal">50.0%</text>
+<text x="390" y="421" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">16.8 km/h</text>
+<text x="520" y="421" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">50.0%</text>
+<text x="660" y="421" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">N/A</text>
+<text x="800" y="421" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">3.14 m/s³</text>
+<text x="930" y="421" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">0.00 m (Crash)</text>
+<text x="1050" y="421" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">12.0%</text>
+<rect x="50" y="490" width="538.0" height="240" fill="#151B28" rx="10" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="70" y="522" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold">Key Empirical Findings & Safety Validation</text>
+<circle cx="78" cy="546" r="3.5" fill="#00E5FF"/>
+<text x="92" y="550" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">100% Collision-Free Navigation: <tspan fill="#8B97AF" font-weight="normal">Evasion past stationary cows, aggressive auto cut-ins, and potholes via 7-Factor IRRM.</tspan></text>
+<circle cx="78" cy="588" r="3.5" fill="#00E5FF"/>
+<text x="92" y="592" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Super-Fast Replanning (12.4ms): <tspan fill="#8B97AF" font-weight="normal">Well below the 100ms real-time constraint (8.0x safety margin) ensuring deterministic execution.</tspan></text>
+<circle cx="78" cy="630" r="3.5" fill="#00E5FF"/>
+<text x="92" y="634" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Superior Lateral Passenger Comfort: <tspan fill="#8B97AF" font-weight="normal">RMS lateral jerk reduced by 71.7% compared to Pure Pursuit due to smooth Frenet cubic splines.</tspan></text>
+<circle cx="78" cy="672" r="3.5" fill="#00E5FF"/>
+<text x="92" y="676" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Sub-Meter Adaptive Corridor Nudge: <tspan fill="#8B97AF" font-weight="normal">Tactical offset (±1.25m) preserves vehicle momentum without unnecessary deadlock stops.</tspan></text>
+<rect x="612.0" y="490" width="538.0" height="240" fill="#151B28" rx="10" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="632.0" y="522" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold">Relative Performance Index (Higher is Better)</text>
+<text x="632.0" y="550" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Safety Index (100 - Collision Rate)</text>
+<rect x="632.0" y="554" width="260" height="6" fill="rgba(255,255,255,0.06)" rx="3"/>
+<rect x="632.0" y="554" width="260.0" height="6" fill="#00E5FF" rx="3"/>
+<text x="902.0" y="560" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="10" font-weight="bold">100%</text>
+<text x="632.0" y="584" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Speed Efficiency Ratio</text>
+<rect x="632.0" y="588" width="260" height="6" fill="rgba(255,255,255,0.06)" rx="3"/>
+<rect x="632.0" y="588" width="175.76" height="6" fill="#00E5FF" rx="3"/>
+<text x="902.0" y="594" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="10" font-weight="bold">68%</text>
+<text x="632.0" y="618" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Completion Rate</text>
+<rect x="632.0" y="622" width="260" height="6" fill="rgba(255,255,255,0.06)" rx="3"/>
+<rect x="632.0" y="622" width="260.0" height="6" fill="#00E5FF" rx="3"/>
+<text x="902.0" y="628" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="10" font-weight="bold">100%</text>
+<text x="632.0" y="652" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Passenger Comfort Index</text>
+<rect x="632.0" y="656" width="260" height="6" fill="rgba(255,255,255,0.06)" rx="3"/>
+<rect x="632.0" y="656" width="239.20000000000002" height="6" fill="#00E5FF" rx="3"/>
+<text x="902.0" y="662" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="10" font-weight="bold">92%</text>
+<text x="632.0" y="686" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="10">Real-Time Feasibility</text>
+<rect x="632.0" y="690" width="260" height="6" fill="rgba(255,255,255,0.06)" rx="3"/>
+<rect x="632.0" y="690" width="247.0" height="6" fill="#00E5FF" rx="3"/>
+<text x="902.0" y="696" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="10" font-weight="bold">95%</text>
+</svg>

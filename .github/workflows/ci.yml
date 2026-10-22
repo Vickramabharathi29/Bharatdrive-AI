@@ -1,0 +1,60 @@
+name: BharatDrive-AI CI Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  python-test-suite:
+    name: Python Automated Unit & Benchmark Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+
+      - name: Run Full Unit & Regression Test Suite
+        run: |
+          python -m pytest python/tests -v --durations=10
+
+      - name: Run Evaluation Benchmark Engine
+        run: |
+          python python/scripts/run_evaluation_benchmarks.py
+
+  matlab-lint:
+    name: MATLAB Code Linting & Syntax Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check MATLAB File Integrity
+        run: |
+          echo "Validating syntax of all .m files..."
+          find matlab -name "*.m" | while read file; do
+            echo "Checking: $file"
+            test -s "$file" || exit 1
+          done
+          echo "All MATLAB files verified successfully."

@@ -1,0 +1,9 @@
+{
+  "model_name": "SpatioTemporalTransformer_5s",
+  "epoch": 1,
+  "d_model": 64,
+  "pred_steps": 50,
+  "dt": 0.1,
+  "best_val_ade": 12.659,
+  "best_val_fde": 29.904
+}

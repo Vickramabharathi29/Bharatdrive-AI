@@ -1,0 +1,98 @@
+# Indian Road Specifications & Heterogeneous Traffic Catalog
+# Based on IRC (Indian Roads Congress) standards adapted for unstructured environments
+
+road_types:
+  single_lane:
+    carriageway_width_m: 3.75
+    shoulder_width_m: 1.00
+    has_lane_markings: false
+    speed_limit_mps: 11.11  # 40 km/h
+  intermediate_lane:
+    carriageway_width_m: 5.50
+    shoulder_width_m: 1.25
+    has_lane_markings: false
+    speed_limit_mps: 13.89  # 50 km/h
+  two_lane_undivided:
+    carriageway_width_m: 7.00
+    shoulder_width_m: 1.50
+    has_lane_markings: true  # often faded or disregarded
+    speed_limit_mps: 16.67  # 60 km/h
+  four_lane_divided:
+    carriageway_width_m: 14.00
+    median_width_m: 1.50
+    has_lane_markings: true
+    speed_limit_mps: 22.22  # 80 km/h
+
+road_hazards:
+  pothole_classification:
+    minor:
+      max_depth_m: 0.04
+      action: "REDUCE_SPEED"
+      max_traversal_speed_mps: 8.33 # 30 km/h
+    moderate:
+      max_depth_m: 0.08
+      action: "STRADDLE_OR_SLOW"
+      max_traversal_speed_mps: 4.17 # 15 km/h
+    severe:
+      min_depth_m: 0.08
+      action: "LATERAL_AVOIDANCE"
+      max_traversal_speed_mps: 1.39 # 5 km/h if unavoidable
+  speed_breaker:
+    height_m: 0.10
+    length_m: 3.70
+    approach_speed_mps: 4.17 # 15 km/h
+
+heterogeneous_agents:
+  pedestrian:
+    length_m: 0.50
+    width_m: 0.50
+    height_m: 1.70
+    lateral_safety_buffer_m: 1.20
+    longitudinal_safety_buffer_m: 2.00
+    max_expected_speed_mps: 2.0
+    behavior_type: "UNPREDICTABLE_CROSSING"
+
+  two_wheeler: # Scooter, Motorcycle, Bicycle
+    length_m: 2.00
+    width_m: 0.80
+    height_m: 1.30
+    lateral_safety_buffer_m: 1.50 # Extra buffer for wobble & filtering
+    longitudinal_safety_buffer_m: 3.50
+    max_expected_speed_mps: 16.67
+    behavior_type: "GAP_FILTERING_AND_WEAVING"
+
+  three_wheeler: # Auto-Rickshaw
+    length_m: 2.70
+    width_m: 1.40
+    height_m: 1.80
+    lateral_safety_buffer_m: 1.20
+    longitudinal_safety_buffer_m: 3.50
+    max_expected_speed_mps: 13.89
+    behavior_type: "AGGRESSIVE_CUT_IN_AND_SUDDEN_STOP"
+
+  stray_animal: # Cattle (Cow), Stray Dog
+    length_m: 2.20
+    width_m: 0.90
+    height_m: 1.50
+    lateral_safety_buffer_m: 1.80 # Animals spook or remain stationary
+    longitudinal_safety_buffer_m: 5.00
+    max_expected_speed_mps: 3.00
+    behavior_type: "STATIONARY_OR_ERRATIC"
+
+  car:
+    length_m: 4.20
+    width_m: 1.80
+    height_m: 1.50
+    lateral_safety_buffer_m: 1.00
+    longitudinal_safety_buffer_m: 4.00
+    max_expected_speed_mps: 22.22
+    behavior_type: "STANDARD_VEHICLE"
+
+  bus_truck:
+    length_m: 9.50
+    width_m: 2.60
+    height_m: 3.50
+    lateral_safety_buffer_m: 1.60
+    longitudinal_safety_buffer_m: 6.00
+    max_expected_speed_mps: 16.67
+    behavior_type: "WIDE_SWING_AND_BLIND_SPOTS"

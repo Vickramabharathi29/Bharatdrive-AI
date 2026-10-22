@@ -1,0 +1,25 @@
+{
+  "model_version": "YOLOv11s-IndianRoads-v1.0",
+  "num_classes": 11,
+  "classes": {
+    "0": "car",
+    "1": "bus",
+    "2": "truck",
+    "3": "bike",
+    "4": "auto_rickshaw",
+    "5": "cycle",
+    "6": "cow",
+    "7": "dog",
+    "8": "pedestrian",
+    "9": "push_cart",
+    "10": "pothole"
+  },
+  "best_epoch": 84,
+  "metrics": {
+    "mAP_50": 0.884,
+    "mAP_50_95": 0.642,
+    "precision": 0.891,
+    "recall": 0.865
+  },
+  "onnx_export_ready": true
+}

@@ -1,0 +1,80 @@
+# RoadRunner Scene 5: Cattle Crossing (Sudden Obstruction on Undivided Road)
+scenario_id: "RR_IND_SCN_05_CATTLE"
+title: "Bovine Herd Obstruction with Oncoming Commercial Bus & Tailgating Two-Wheeler"
+irc_standards: ["IRC:73-1980", "IRC:67-2012"]
+
+road_geometry:
+  type: "two_lane_undivided_state_highway"
+  carriageway_width_m: 7.00
+  lane_width_m: 3.50
+  shoulder_type: "unpaved_earthen"
+  shoulder_width_left_m: 1.50
+  shoulder_width_right_m: 1.50
+  total_length_m: 350.0
+  surface_friction_anomaly:
+    s_start: 70.0
+    s_end: 110.0
+    type: "agricultural_mud_tracks"
+    reduced_friction_coefficient: 0.45
+
+road_signs:
+  - { type: "W-27", name: "Cattle_Crossing_Caution", s: 30.0, lateral_offset_m: 2.50 }
+  - { type: "Cautionary", name: "Accident_Prone_Black_Spot", s: 45.0, lateral_offset_m: 2.50 }
+  - { type: "M-01", name: "Speed_Limit_50", s: 20.0, lateral_offset_m: 2.50 }
+
+road_boundaries:
+  left_boundary: { type: "open_irrigation_canal", offset_m: 2.50, depth_m: 1.20 }
+  right_boundary: { type: "avenue_tree_line", species: "Banyan_and_Mango", whitewashed_trunks: true }
+
+buildings_and_props:
+  - { type: "roadside_gaushala_cowshed", s: 85.0, lateral_offset_m: 8.0 }
+  - { type: "irrigation_pump_room", s: 120.0, lateral_offset_m: -6.0 }
+
+actors:
+  ego:
+    type: "Tata_Nexon_EV"
+    initial_s: 15.0
+    initial_d: -1.75 # Driving in left lane
+    target_speed_mps: 13.89 # 50 km/h
+  moving_vehicles:
+    - id: "oncoming_state_transport_bus"
+      type: "MSRTC_Commercial_Bus"
+      length_m: 11.20
+      width_m: 2.60
+      initial_s: 230.0
+      initial_d: 1.75 # Oncoming in right lane
+      speed_mps: -12.50 # -45 km/h
+    - id: "tailgating_motorcycle"
+      type: "Two_Wheeler"
+      initial_s: 5.0
+      initial_d: -1.75
+      speed_mps: 13.89
+      gap_headway_s: 0.8 # Insufficient gap
+  pedestrians:
+    - id: "herdsman_gwala"
+      s: 92.0
+      d: 2.80
+      holding_stick: true
+      speed_mps: 0.90
+  animals:
+    - id: "lead_cow_stationary" # Critical obstacle
+      type: "Indian_Desi_Cow"
+      length_m: 2.20
+      width_m: 0.90
+      mass_kg: 450.0
+      s: 88.0
+      d: -1.50 # Blocked right in ego travel path
+      orientation_deg: 90.0 # Perpendicular across lane
+      speed_mps: 0.0
+    - id: "erratic_calf"
+      type: "Calf"
+      s: 82.0
+      d: -3.20 # Starting on left shoulder
+      target_d: -1.20 # Sprints across into lane
+      speed_mps: 2.80
+      trigger: "EGO_TTC_LESS_THAN_3S"
+    - id: "second_cow_shoulder"
+      type: "Indian_Desi_Cow"
+      s: 95.0
+      d: 2.50 # Grazing on opposite shoulder
+      speed_mps: 0.20

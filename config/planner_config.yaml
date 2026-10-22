@@ -1,0 +1,39 @@
+# Planner and Cost Evaluation Parameters
+frenet_sampling:
+  # Lateral displacement sampling (d)
+  d_step_m: 0.25
+  max_d_offset_m: 2.25
+  
+  # Longitudinal horizon sampling (T)
+  time_horizon_min_s: 2.0
+  time_horizon_max_s: 4.5
+  time_horizon_step_s: 0.5
+  delta_t_s: 0.1 # Integration time step
+
+  # Target speed sampling around nominal speed
+  speed_sampling_step_mps: 1.39 # 5 km/h
+  num_speed_samples: 5
+
+cost_weights:
+  # Trajectory smoothness & dynamics
+  jerk_longitudinal: 0.15
+  jerk_lateral: 0.20
+  acceleration_longitudinal: 0.10
+  acceleration_lateral: 0.25
+  time_efficiency: 0.10
+
+  # Corridor & reference tracking
+  target_speed_deviation: 1.20
+  corridor_center_offset: 0.80
+
+  # Safety & Collision Avoidance
+  static_obstacle_proximity: 80.0
+  dynamic_obstacle_proximity: 120.0
+  pothole_penalty: 50.0
+  boundary_violation: 500.0
+
+safety_margins:
+  static_obstacle_buffer_m: 0.60
+  dynamic_obstacle_buffer_m: 1.00
+  pothole_clearance_m: 0.40
+  road_edge_margin_m: 0.35

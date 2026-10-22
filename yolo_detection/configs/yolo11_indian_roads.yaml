@@ -1,0 +1,53 @@
+# YOLOv11 Training Configuration for Indian Road Object & Hazard Detection
+# Optimized for high occlusion, mixed traffic, and road surface defects
+
+# Model parameters
+model: "yolo11s.pt" # Recommended: YOLOv11 small (ideal speed/accuracy tradeoff for autonomous EV compute)
+task: "detect"
+mode: "train"
+
+# Hyperparameters
+epochs: 100
+batch: 16
+imgsz: 640
+patience: 25
+optimizer: "AdamW"
+lr0: 0.002
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Loss gains
+box: 7.5   # Box loss gain (higher for precise distance estimation)
+cls: 0.6   # Class loss gain (balances rare classes: cattle, pushcarts)
+dfl: 1.5   # Distribution Focal Loss gain (handles blurred pothole edges)
+
+# Augmentations tailored for Indian conditions
+hsv_h: 0.015 # Hue augmentation (sunlight & shadows)
+hsv_s: 0.7   # Saturation augmentation (vibrant vehicle colors)
+hsv_v: 0.4   # Value augmentation (harsh noon glare to overcast monsoon)
+degrees: 0.0 # Rotation (vehicles stay upright on road plane)
+translate: 0.15 # Translation
+scale: 0.6   # Scale jitter (crucial for distant oncoming trucks vs close-up bikes)
+shear: 0.0
+perspective: 0.0005 # Minor perspective tilt
+flipud: 0.0  # Do not flip upside down
+fliplr: 0.5  # Left-right flip (50% probability)
+bgr: 0.0
+mosaic: 1.0  # 4-image mosaic stitching (simulates dense traffic swarms)
+mixup: 0.15  # Mixup augmentation (simulates partial occlusions by buses/trucks)
+copy_paste: 0.15 # Copy-paste of cattle/potholes across scenes
+auto_augment: "randaugment"
+erasing: 0.4 # Random erasing (simulates vehicle blind-spot cut-ins)
+crop_fraction: 1.0
+
+# Export targets
+export:
+  format: "onnx"
+  opset: 17
+  simplify: true
+  dynamic: false
+  half: false # FP32 for universal MATLAB / TensorRT compatibility

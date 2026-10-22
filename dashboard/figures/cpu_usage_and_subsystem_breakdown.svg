@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480">
+<rect width="900" height="480" fill="#0D111A" rx="12"/>
+<text x="40" y="45" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold">Metric 7: CPU Usage & Subsystem Computational Profiling</text>
+<text x="40" y="68" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="12">Total Cycle Execution Time: 20.0 ms / 50.0 ms Budget at 20 Hz (CPU Utilization: 40.0% - Lean Edge Feasible)</text>
+<path d="M 230.0 125.0 A 120 120 0 1 1 147.85434728855734 332.4762352905694 L 185.50443811463524 292.38296078239176 A 65 65 0 1 0 230.0 180.0 Z" fill="#00E5FF" stroke="#0D111A" stroke-width="2"/>
+<path d="M 147.85434728855734 332.4762352905694 A 120 120 0 0 1 112.12552991255737 222.51424224971302 L 166.15132870263523 232.8202145519279 A 65 65 0 0 0 185.50443811463524 292.38296078239176 Z" fill="#00E676" stroke="#0D111A" stroke-width="2"/>
+<path d="M 112.12552991255737 222.51424224971302 A 120 120 0 0 1 142.52376470943062 162.85434728855734 L 182.61703921760824 200.50443811463524 A 65 65 0 0 0 166.15132870263523 232.8202145519279 Z" fill="#FFB300" stroke="#0D111A" stroke-width="2"/>
+<path d="M 142.52376470943062 162.85434728855734 A 120 120 0 0 1 178.90648501219124 136.4207537040777 L 202.32434604827026 186.18624158970874 A 65 65 0 0 0 182.61703921760824 200.50443811463524 Z" fill="#B388FF" stroke="#0D111A" stroke-width="2"/>
+<path d="M 178.90648501219124 136.4207537040777 A 120 120 0 0 1 200.15721354021736 128.7700206645643 L 213.83515733428442 182.042094526639 A 65 65 0 0 0 202.32434604827026 186.18624158970874 Z" fill="#FF6D00" stroke="#0D111A" stroke-width="2"/>
+<path d="M 200.15721354021736 128.7700206645643 A 120 120 0 0 1 229.99999999999997 125.0 L 230.0 180.0 A 65 65 0 0 0 213.83515733428442 182.042094526639 Z" fill="#78909C" stroke="#0D111A" stroke-width="2"/>
+<text x="230" y="239" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" text-anchor="middle">40.0%</text>
+<text x="230" y="259" fill="#8B97AF" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle">CPU LOAD</text>
+<rect x="440" y="110" width="420" height="280" fill="#151B28" rx="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+<text x="456" y="138" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold">Subsystem Compute Budget Breakdown</text>
+<text x="456" y="166" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500">Adaptive Planning (Hybrid A* + DWA + PPO)</text>
+<text x="844" y="166" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold" text-anchor="end">12.4 ms (62%)</text>
+<rect x="456" y="172" width="388" height="8" fill="rgba(255,255,255,0.06)" rx="4"/>
+<rect x="456" y="172" width="240.56" height="8" fill="#00E5FF" rx="4"/>
+<text x="456" y="204" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500">Perception Suite & EKF Sensor Fusion</text>
+<text x="844" y="204" fill="#00E676" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold" text-anchor="end">3.2 ms (16%)</text>
+<rect x="456" y="210" width="388" height="8" fill="rgba(255,255,255,0.06)" rx="4"/>
+<rect x="456" y="210" width="62.08" height="8" fill="#00E676" rx="4"/>
+<text x="456" y="242" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500">7-Factor Risk Assessment (IRRM)</text>
+<text x="844" y="242" fill="#FFB300" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold" text-anchor="end">1.8 ms (9%)</text>
+<rect x="456" y="248" width="388" height="8" fill="rgba(255,255,255,0.06)" rx="4"/>
+<rect x="456" y="248" width="34.92" height="8" fill="#FFB300" rx="4"/>
+<text x="456" y="280" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500">Vehicle Motion Control (Stanley + PID)</text>
+<text x="844" y="280" fill="#B388FF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold" text-anchor="end">1.2 ms (6%)</text>
+<rect x="456" y="286" width="388" height="8" fill="rgba(255,255,255,0.06)" rx="4"/>
+<rect x="456" y="286" width="23.279999999999998" height="8" fill="#B388FF" rx="4"/>
+<text x="456" y="318" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500">Stateflow Decision Supervisor</text>
+<text x="844" y="318" fill="#FF6D00" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold" text-anchor="end">0.6 ms (3%)</text>
+<rect x="456" y="324" width="388" height="8" fill="rgba(255,255,255,0.06)" rx="4"/>
+<rect x="456" y="324" width="11.639999999999999" height="8" fill="#FF6D00" rx="4"/>
+<text x="456" y="356" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="11" font-weight="500">Vehicle Dynamics Plant Integration</text>
+<text x="844" y="356" fill="#78909C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold" text-anchor="end">0.8 ms (4%)</text>
+<rect x="456" y="362" width="388" height="8" fill="rgba(255,255,255,0.06)" rx="4"/>
+<rect x="456" y="362" width="15.52" height="8" fill="#78909C" rx="4"/>
+<rect x="80" y="415" width="780" height="45" fill="rgba(0,229,255,0.08)" rx="6" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
+<text x="100" y="442" fill="#00E5FF" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">EDGE DEPLOYMENT READY:</text>
+<text x="280" y="442" fill="#F0F4FC" font-family="Segoe UI, sans-serif" font-size="12">Autonomous pipeline requires only 20ms per cycle, well within 50ms allocation on NVIDIA Jetson / NXP BlueBox.</text>
+</svg>

@@ -1,0 +1,70 @@
+# RoadRunner Scene 1: Village Road (Gramin Sadak)
+scenario_id: "RR_IND_SCN_01_VILLAGE"
+title: "Single-Lane Rural Road with Unpaved Shoulders, Potholes & Oncoming Tractor"
+irc_standards: ["IRC:73-1980", "IRC:67-2012"]
+
+road_geometry:
+  type: "single_lane_undivided"
+  carriageway_width_m: 3.75
+  shoulder_type: "unpaved_earthen"
+  shoulder_width_left_m: 1.20
+  shoulder_width_right_m: 1.20
+  shoulder_dropoff_m: 0.15
+  camber_slope_pct: 2.5
+  total_length_m: 300.0
+  horizontal_curves:
+    - { s_start: 60.0, s_end: 140.0, radius_m: 110.0, direction: "right" }
+    - { s_start: 180.0, s_end: 260.0, radius_m: 95.0, direction: "left" }
+  potholes:
+    - { s: 45.0, d: 0.40, diameter_m: 0.80, depth_m: 0.09, severity: "severe" }
+    - { s: 125.0, d: -0.60, diameter_m: 0.60, depth_m: 0.05, severity: "moderate" }
+    - { s: 210.0, d: 0.10, diameter_m: 1.10, depth_m: 0.11, severity: "severe" }
+
+road_signs:
+  - { type: "W-21", name: "Narrow_Road_Ahead", s: 20.0, lateral_offset_m: 2.50 }
+  - { type: "W-01", name: "Sharp_Curve_Right", s: 50.0, lateral_offset_m: 2.50 }
+  - { type: "M-01", name: "Speed_Limit_30", s: 25.0, lateral_offset_m: 2.50 }
+
+road_boundaries:
+  left_drain: { type: "earthen_unlined_ditch", width_m: 0.80, depth_m: 0.50 }
+  right_drain: { type: "earthen_unlined_ditch", width_m: 0.80, depth_m: 0.50 }
+  boundary_stones: { spacing_m: 10.0, color: "whitewashed" }
+  vegetation: ["Lantana_shrub", "Neem_tree", "Banyan_tree"]
+
+buildings_and_props:
+  - { type: "rural_thatched_hut", s: 80.0, lateral_offset_m: 5.50 }
+  - { type: "tea_stall_chai_tapri", s: 140.0, lateral_offset_m: 4.20 }
+  - { type: "cattle_shed_tin_roof", s: 220.0, lateral_offset_m: 6.00 }
+
+actors:
+  ego:
+    type: "Tata_Nexon_EV"
+    initial_s: 10.0
+    initial_d: 0.0
+    target_speed_mps: 8.33 # 30 km/h
+  moving_vehicles:
+    - id: "tractor_trolley"
+      type: "Farm_Tractor_With_Sugarcane_Trolley"
+      length_m: 8.20
+      width_m: 2.30
+      initial_s: 220.0
+      initial_d: 0.0
+      speed_mps: -5.0 # Oncoming (18 km/h)
+    - id: "hero_splendor"
+      type: "Two_Wheeler"
+      length_m: 2.00
+      width_m: 0.80
+      initial_s: 280.0
+      initial_d: 0.80
+      speed_mps: -8.33 # Oncoming (30 km/h)
+  pedestrians:
+    - id: "farmer_with_bundle"
+      s: 95.0
+      d: 1.50 # Walking along shoulder
+      speed_mps: 1.10
+  animals:
+    - id: "stray_dog"
+      s: 142.0
+      d: 1.80 # Resting near tea stall
+      speed_mps: 0.0
+      motion_trigger: "EGO_DISTANCE_LESS_THAN_15M"

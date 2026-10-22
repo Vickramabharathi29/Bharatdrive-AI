@@ -1,0 +1,31 @@
+# BharatDrive-AI: Indian Road Object Detection Dataset Configuration
+# Standard YOLO dataset format for 11 heterogeneous classes
+
+path: ../dataset # dataset root dir
+train: images/train
+val: images/val
+test: images/test
+
+# Number of classes
+nc: 11
+
+# Class names corresponding to Indian traffic conditions
+names:
+  0: car
+  1: bus
+  2: truck
+  3: bike
+  4: auto_rickshaw
+  5: cycle
+  6: cow
+  7: dog
+  8: pedestrian
+  9: push_cart
+  10: pothole
+
+# Metadata & IRC Class Categories
+metadata:
+  project: "BharatDrive-AI"
+  description: "Indian Road Heterogeneous Obstacle and Road Hazard Dataset"
+  resolution: [640, 640]
+  format: "YOLO (class_id center_x center_y width height) normalized [0, 1]"
