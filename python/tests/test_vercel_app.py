@@ -148,3 +148,40 @@ def test_404_handler(client):
     assert response.status_code == 404
     data = response.get_json()
     assert "error" in data
+
+
+def test_root_forwarder_entrypoints():
+    """Verifies that index.py, wsgi.py, server.py, and main.py all export app, handler, application."""
+    import index
+    import wsgi
+    import server
+    import main
+
+    for mod in [index, wsgi, server, main]:
+        assert hasattr(mod, "app")
+        assert hasattr(mod, "handler")
+        assert hasattr(mod, "application")
+        assert mod.app == app
+        assert mod.handler == app
+        assert mod.application == app
+
+
+def test_supabase_endpoints(client):
+    """Verifies Supabase connectivity status and graceful offline handling."""
+    status_resp = client.get("/api/supabase/status")
+    assert status_resp.status_code == 200
+    status_data = status_resp.get_json()
+    assert "supabase_configured" in status_data
+    assert "supabase_connected" in status_data
+    assert status_data["telemetry_table"] == "telemetry_logs"
+
+    # Test telemetry ingestion endpoint (graceful local fallback if offline)
+    telemetry_payload = {
+        "time": 0.5,
+        "ego_v": 11.2,
+        "max_risk": 0.35,
+        "state_name": "Cruising"
+    }
+    telem_resp = client.post("/api/supabase/telemetry", json=telemetry_payload)
+    assert telem_resp.status_code in (200, 201)
+

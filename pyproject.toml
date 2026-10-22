@@ -41,10 +41,12 @@ dependencies = [
     "opencv-python-headless>=4.8.0",
     "Flask>=3.0.0",
     "Werkzeug>=3.0.0",
+    "supabase>=2.0.0",
+    "python-dotenv>=1.0.0",
 ]
 
 [tool.vercel]
-entrypoint = "app.py"
+entrypoint = "app.py:app"
 
 [project.optional-dependencies]
 dev = [

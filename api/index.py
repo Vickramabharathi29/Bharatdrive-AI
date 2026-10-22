@@ -21,7 +21,7 @@ for path in [str(ROOT_DIR), str(PYTHON_DIR)]:
         sys.path.insert(0, path)
 
 # Import the production Flask application and handler
-from app import app, handler
+from app import app, handler, application
 
 # Export for Vercel WSGI/Serverless runtime
-__all__ = ["app", "handler"]
+__all__ = ["app", "handler", "application"]

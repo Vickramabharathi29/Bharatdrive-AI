@@ -40,6 +40,24 @@ except Exception as err:
     CORE_MODULES_LOADED = False
     MODULE_IMPORT_ERROR = str(err)
 
+# Try loading environment variables from .env
+try:
+    from dotenv import load_dotenv
+    load_dotenv(ROOT_DIR / ".env")
+except ImportError:
+    pass
+
+# Supabase Client Initialization (Optional / Graceful)
+SUPABASE_URL = os.getenv("SUPABASE_URL", "")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY", os.getenv("SUPABASE_ANON_KEY", ""))
+supabase_client = None
+if SUPABASE_URL and SUPABASE_KEY:
+    try:
+        from supabase import create_client
+        supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
+    except Exception:
+        supabase_client = None
+
 # -----------------------------------------------------------------------------
 # 2. Flask Application Setup
 # -----------------------------------------------------------------------------
@@ -54,8 +72,9 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "bharatdrive-ai-secret-key-20
 app.config["JSON_SORT_KEYS"] = False
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16 MB max payload
 
-# Vercel Serverless Handler alias
+# Vercel Serverless Handler & WSGI aliases
 handler = app
+application = app
 
 # -----------------------------------------------------------------------------
 # 3. CORS & Security Headers Middleware
@@ -217,6 +236,41 @@ def api_scenario_detail(scenario_id: int):
         if sc["id"] == scenario_id:
             return jsonify({"scenario": sc})
     return jsonify({"error": f"Scenario {scenario_id} not found"}), 404
+
+@app.route("/api/supabase/status", methods=["GET"])
+def api_supabase_status():
+    """Returns Supabase connectivity and configuration status."""
+    is_configured = bool(SUPABASE_URL and SUPABASE_KEY)
+    masked_url = f"{SUPABASE_URL[:14]}...{SUPABASE_URL[-8:]}" if is_configured and len(SUPABASE_URL) > 22 else ("configured" if is_configured else "not_configured")
+    return jsonify({
+        "supabase_configured": is_configured,
+        "supabase_connected": supabase_client is not None,
+        "endpoint_url": masked_url,
+        "telemetry_table": "telemetry_logs",
+        "service": "BharatDrive-AI Cloud Storage Gateway"
+    })
+
+@app.route("/api/supabase/telemetry", methods=["POST"])
+def api_supabase_telemetry():
+    """Logs simulation run record to Supabase if configured."""
+    data = request.get_json(force=True, silent=True) or {}
+    if not supabase_client:
+        return jsonify({
+            "success": False,
+            "message": "Supabase credentials not configured in environment variables (SUPABASE_URL, SUPABASE_KEY). Telemetry held in-memory.",
+            "logged_locally": True,
+            "telemetry_summary": {
+                "step_time": data.get("time", 0.0),
+                "ego_speed": data.get("ego_v", 0.0),
+                "risk_score": data.get("max_risk", 0.0)
+            }
+        }), 200
+
+    try:
+        res = supabase_client.table("telemetry_logs").insert(data).execute()
+        return jsonify({"success": True, "data": res.data}), 201
+    except Exception as err:
+        return jsonify({"success": False, "error": str(err)}), 500
 
 @app.route("/api/vehicle-config", methods=["GET"])
 def api_vehicle_config():
