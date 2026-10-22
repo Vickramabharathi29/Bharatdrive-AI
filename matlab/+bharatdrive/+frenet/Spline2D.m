@@ -46,7 +46,7 @@ classdef Spline2D < handle
             th_m = obj.calc_tangent_angle(s_m);
             th_p = obj.calc_tangent_angle(s_p);
             d_th = atan2(sin(th_p - th_m), cos(th_p - th_m));
-            kappa = d_th / (s_p - s_m);
+            kappa = d_th / max(1e-4, s_p - s_m);
         end
 
         function s_proj = find_projection(obj, x, y)

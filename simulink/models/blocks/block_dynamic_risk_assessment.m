@@ -20,8 +20,13 @@ mu = env_bus.FrictionMu;
 weather_factor = 1.0 + (0.85 - mu) * 0.60;
 width_factor = max(1.0, 7.0 / max(3.5, road_w));
 
-for i = 1:5
-    dist = fused_tracks(i, 7);
+N_tracks = size(fused_tracks, 1);
+for i = 1:min(5, N_tracks)
+    if size(fused_tracks, 2) >= 7
+        dist = fused_tracks(i, 7);
+    else
+        dist = hypot(fused_tracks(i, 1), fused_tracks(i, 2));
+    end
     if dist < 0.1 || dist > 80.0
         continue;
     end

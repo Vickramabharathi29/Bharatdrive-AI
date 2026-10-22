@@ -16,7 +16,8 @@ elseif y_target < -half_w
 end
 
 % Obstacle geometric nudge
-for k = 1:5
+N_obs = size(obstacles, 1);
+for k = 1:min(5, N_obs)
     ox = obstacles(k, 1);
     oy = obstacles(k, 2);
     d = hypot(x_target - ox, y_target - oy);
@@ -28,6 +29,9 @@ for k = 1:5
         end
     end
 end
+
+% Ensure avoidance nudge does not breach outer road boundary
+y_target = max(-half_w, min(half_w, y_target));
 
 local_target = [x_target; y_target];
 end

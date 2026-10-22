@@ -33,7 +33,8 @@ yf = yr + L * sin(yaw);
 % 2. Find Nearest Waypoint to Front Axle
 min_d = 1e6;
 nearest_idx = 1;
-for i = 1:20
+N_pts = size(path_points, 1);
+for i = 1:min(20, N_pts)
     d = hypot(path_points(i, 1) - xf, path_points(i, 2) - yf);
     if d < min_d
         min_d = d;
