@@ -18,6 +18,8 @@ from typing import Any, Dict
 # -----------------------------------------------------------------------------
 ROOT_DIR = Path(__file__).resolve().parent
 PYTHON_DIR = ROOT_DIR / "python"
+TEMPLATES_DIR = ROOT_DIR / "templates"
+STATIC_DIR = ROOT_DIR / "static"
 DASHBOARD_DIR = ROOT_DIR / "dashboard"
 CONFIG_DIR = ROOT_DIR / "config"
 
@@ -26,7 +28,7 @@ for p in [str(ROOT_DIR), str(PYTHON_DIR)]:
     if p not in sys.path:
         sys.path.insert(0, p)
 
-from flask import Flask, jsonify, request, send_from_directory, render_template_string, Response
+from flask import Flask, jsonify, request, send_from_directory, render_template, Response
 
 # Core BharatDrive-AI Autonomous Driving Subsystems
 try:
@@ -63,8 +65,9 @@ if SUPABASE_URL and SUPABASE_KEY:
 # -----------------------------------------------------------------------------
 app = Flask(
     __name__,
-    static_folder=str(DASHBOARD_DIR),
-    static_url_path=""
+    template_folder=str(TEMPLATES_DIR),
+    static_folder=str(STATIC_DIR),
+    static_url_path="/static"
 )
 
 # App Configuration from Environment Variables
@@ -90,10 +93,15 @@ def add_cors_and_security_headers(response: Response) -> Response:
     response.headers["X-Service"] = "BharatDrive-AI-Vercel"
     return response
 
-@app.route("/api/<path:dummy>", methods=["OPTIONS"])
-def handle_options(dummy: str):
-    """Handle CORS pre-flight requests gracefully."""
-    return Response(status=204)
+@app.before_request
+def handle_options_preflight():
+    """Handle CORS pre-flight requests gracefully without hijacking 404 routing."""
+    if request.method == "OPTIONS":
+        res = Response(status=204)
+        res.headers["Access-Control-Allow-Origin"] = "*"
+        res.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS, PUT, DELETE"
+        res.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Requested-With"
+        return res
 
 # -----------------------------------------------------------------------------
 # 4. Frontend & Static Asset Routes (Telemetry & Risk Dashboard)
@@ -101,8 +109,9 @@ def handle_options(dummy: str):
 @app.route("/")
 def index():
     """Serves the master BharatDrive-AI Telemetry & Risk Dashboard."""
-    index_file = DASHBOARD_DIR / "index.html"
-    if index_file.exists():
+    if (TEMPLATES_DIR / "index.html").exists():
+        return render_template("index.html")
+    if (DASHBOARD_DIR / "index.html").exists():
         return send_from_directory(str(DASHBOARD_DIR), "index.html")
     return jsonify({
         "status": "online",
@@ -114,30 +123,39 @@ def index():
 @app.route("/dashboard/")
 def dashboard_redirect():
     """Direct route to the dashboard."""
+    if (TEMPLATES_DIR / "index.html").exists():
+        return render_template("index.html")
     return send_from_directory(str(DASHBOARD_DIR), "index.html")
 
-@app.route("/dashboard/<path:filename>")
-def serve_dashboard_files(filename: str):
-    """Serves files from the dashboard directory."""
-    return send_from_directory(str(DASHBOARD_DIR), filename)
+@app.route("/static/<path:filename>")
+def serve_static(filename: str):
+    """Serves static assets from static/ folder."""
+    return send_from_directory(str(STATIC_DIR), filename)
 
 @app.route("/css/<path:filename>")
 def serve_css(filename: str):
-    """Serves CSS assets."""
-    css_dir = DASHBOARD_DIR / "css"
+    """Serves CSS assets from static/css/ or dashboard/css/."""
+    css_dir = STATIC_DIR / "css" if (STATIC_DIR / "css").exists() else DASHBOARD_DIR / "css"
     return send_from_directory(str(css_dir), filename)
 
 @app.route("/js/<path:filename>")
 def serve_js(filename: str):
-    """Serves JavaScript simulation and UI assets."""
-    js_dir = DASHBOARD_DIR / "js"
+    """Serves JavaScript simulation and UI assets from static/js/ or dashboard/js/."""
+    js_dir = STATIC_DIR / "js" if (STATIC_DIR / "js").exists() else DASHBOARD_DIR / "js"
     return send_from_directory(str(js_dir), filename)
 
 @app.route("/figures/<path:filename>")
 def serve_figures(filename: str):
-    """Serves pre-rendered metric and architecture figures."""
-    fig_dir = DASHBOARD_DIR / "figures"
+    """Serves pre-rendered metric and architecture figures from static/figures/ or dashboard/figures/."""
+    fig_dir = STATIC_DIR / "figures" if (STATIC_DIR / "figures").exists() else DASHBOARD_DIR / "figures"
     return send_from_directory(str(fig_dir), filename)
+
+@app.route("/dashboard/<path:filename>")
+def serve_dashboard_files(filename: str):
+    """Serves files from the static or dashboard directory."""
+    if (STATIC_DIR / filename).exists():
+        return send_from_directory(str(STATIC_DIR), filename)
+    return send_from_directory(str(DASHBOARD_DIR), filename)
 
 # -----------------------------------------------------------------------------
 # 5. REST API Endpoints
